@@ -1,0 +1,67 @@
+# Starter occupation map used to expand criteria targets into multilingual search titles.
+# Codes: ISCO-08 (international), NOC 2021 (Canada), SOC 2018 (US). Verify codes for official filings.
+- key: data-engineer
+  isco: "2521"
+  noc: "21223"
+  soc: "15-1243"
+  titles: {en: [data engineer, big data engineer, etl developer, analytics engineer, data platform engineer], es: [ingeniero de datos, ingeniera de datos, desarrollador etl], fr: [ingenieur de donnees, ingenieure de donnees]}
+  skills: [python, sql, etl, spark, data-modeling, data-warehousing, azure, aws, airflow, dbt]
+- key: data-analyst
+  isco: "2511"
+  noc: "21223"
+  soc: "15-2051"
+  titles: {en: [data analyst, business intelligence analyst, bi analyst, reporting analyst], es: [analista de datos, analista de inteligencia de negocios, analista bi], fr: [analyste de donnees, analyste bi]}
+  skills: [sql, excel, power-bi, tableau, statistics, python]
+- key: data-scientist
+  isco: "2511"
+  noc: "21211"
+  soc: "15-2051"
+  titles: {en: [data scientist, machine learning engineer, ml engineer], es: [cientifico de datos, cientifica de datos, ingeniero de machine learning], fr: [scientifique des donnees]}
+  skills: [python, machine-learning, statistics, sql, deep-learning]
+- key: software-developer
+  isco: "2512"
+  noc: "21232"
+  soc: "15-1252"
+  titles: {en: [software developer, software engineer, backend developer, full stack developer], es: [desarrollador de software, ingeniero de software, programador], fr: [developpeur logiciel, ingenieur logiciel]}
+  skills: [git, rest-api, javascript, python, java, csharp]
+- key: pharmacy-assistant
+  isco: "3213"
+  noc: "33103"
+  soc: "31-9095"
+  titles: {en: [pharmacy assistant, pharmacy aide, pharmacy clerk, pharmacy technician assistant], es: [auxiliar de farmacia, asistente de farmacia, dependiente de farmacia], fr: [assistant technique en pharmacie, assistante technique en pharmacie, commis de pharmacie]}
+  skills: [pharmacy-dispensing, pharmacy-inventory, customer-service, cash-handling, insurance-billing, pharmacy-software]
+- key: pharmacy-technician
+  isco: "3213"
+  noc: "32124"
+  soc: "29-2052"
+  titles: {en: [pharmacy technician, regulated pharmacy technician], es: [tecnico en farmacia, tecnica en farmacia], fr: [technicien en pharmacie, technicienne en pharmacie]}
+  skills: [pharmacy-dispensing, compounding, pharmacology, pharmacy-software, insurance-billing]
+- key: administrative-assistant
+  isco: "3343"
+  noc: "13110"
+  soc: "43-6014"
+  titles: {en: [administrative assistant, office assistant, executive assistant, office administrator, administrative coordinator], es: [asistente administrativo, asistente administrativa, auxiliar administrativo, auxiliar administrativa, asistente de oficina], fr: [adjoint administratif, adjointe administrative, agent administratif]}
+  skills: [administrative-support, microsoft-office, scheduling, data-entry, customer-service, records-management]
+- key: receptionist
+  isco: "4226"
+  noc: "14101"
+  soc: "43-4171"
+  titles: {en: [receptionist, front desk coordinator, front desk agent], es: [recepcionista], fr: [receptionniste]}
+  skills: [reception, phone-etiquette, scheduling, customer-service, microsoft-office]
+- key: customer-service-rep
+  isco: "4222"
+  noc: "64409"
+  soc: "43-4051"
+  titles: {en: [customer service representative, customer support specialist, call center agent], es: [representante de servicio al cliente, ejecutivo de atencion a clientes, agente de call center], fr: [representant service a la clientele, agent du service a la clientele]}
+  skills: [customer-service, phone-etiquette, crm, communication, data-entry]
+- key: accountant
+  isco: "2411"
+  noc: "11100"
+  soc: "13-2011"
+  titles: {en: [accountant, staff accountant, accounting clerk, bookkeeper], es: [contador, contadora, auxiliar contable, contador general], fr: [comptable, technicien comptable]}
+  skills: [accounting, accounts-payable, excel, quickbooks, financial-analysis]
+- key: project-manager
+  isco: "1219"
+  soc: "13-1082"
+  titles: {en: [project manager, program manager, project coordinator], es: [gerente de proyectos, coordinador de proyectos, lider de proyecto], fr: [gestionnaire de projet, charge de projet]}
+  skills: [project-management, agile, stakeholder-management, jira]

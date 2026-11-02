@@ -1,0 +1,46 @@
+{
+  "schema": "jobfinder.workplan/v1",
+  "agent": "codex/gpt-5",
+  "criteria_id": "example-data-mx-data-engineer-monterrey-onsite-hybrid",
+  "companies": [
+    {
+      "name": "Example Corp México",
+      "domain": "example.com.mx",
+      "careers_url": "https://example.com.mx/careers",
+      "evidence": [{"url": "https://example.com.mx/careers", "kind": "company_site"}],
+      "roles": [
+        {
+          "title": "Ingeniero de Datos Sr.",
+          "url": "https://example.com.mx/careers/1234",
+          "location": {"country": "MX", "region": "MX-NLE", "city": "Monterrey"},
+          "work_mode": "hybrid",
+          "employment_type": "full_time",
+          "description": "Construir pipelines en Azure Data Factory y Databricks…",
+          "contacts": [
+            {
+              "name": "Jane Recruiter",
+              "title": "Talent Acquisition Partner",
+              "type": "talent_acquisition",
+              "profiles": [{"network": "linkedin", "url": "https://www.linkedin.com/in/example-jane"}],
+              "evidence": [{"url": "https://www.linkedin.com/in/example-jane", "kind": "search_result"}]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Company I want to skip",
+      "domain": "skipme.com",
+      "pipeline": {"excluded": true, "notes": "not interested"}
+    }
+  ],
+  "strategy_updates": {
+    "example-data-mx-data-engineer-monterrey-onsite-hybrid": {
+      "queries": [
+        {"text": "ingeniero de datos azure", "location": "Monterrey, Nuevo León, Mexico", "country": "MX"},
+        {"text": "data engineer databricks", "location": "Monterrey, Mexico", "country": "MX"}
+      ],
+      "notes": "Spanish titles yield 3x more postings in Monterrey."
+    }
+  }
+}

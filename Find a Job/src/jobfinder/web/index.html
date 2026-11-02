@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="jf-token" content="__JF_TOKEN__">
+  <title>JobFinder</title>
+  <link rel="stylesheet" href="/static/style.css?v=__JF_VERSION__">
+</head>
+<body>
+<header>
+  <div class="brand">JobFinder <small>v__JF_VERSION__</small></div>
+  <label class="profile-pick">Profile
+    <select id="profileSelect"></select>
+  </label>
+  <nav id="tabs">
+    <button data-tab="home" class="active">Home</button>
+    <button data-tab="profile">Profile</button>
+    <button data-tab="criteria">Criteria</button>
+    <button data-tab="skills">Skills</button>
+    <button data-tab="pipeline">Companies &amp; Roles</button>
+    <button data-tab="runs">Search runs</button>
+    <button data-tab="excel">Excel</button>
+    <button data-tab="settings">AI &amp; Settings</button>
+  </nav>
+</header>
+<div id="banner" class="banner hidden"></div>
+<main>
+  <section id="tab-home" class="tab active"></section>
+  <section id="tab-profile" class="tab"></section>
+  <section id="tab-criteria" class="tab"></section>
+  <section id="tab-skills" class="tab"></section>
+  <section id="tab-pipeline" class="tab"></section>
+  <section id="tab-runs" class="tab"></section>
+  <section id="tab-excel" class="tab"></section>
+  <section id="tab-settings" class="tab"></section>
+</main>
+<div id="toast" class="toast hidden"></div>
+<script src="/static/app.js?v=__JF_VERSION__"></script>
+</body>
+</html>

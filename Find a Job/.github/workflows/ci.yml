@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Lint
+        run: uv run --python 3.12 ruff check src tests
+      - name: Tests
+        run: uv run --python 3.12 pytest -q
+
+  launcher-smoke:
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bootstrap (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/bootstrap.ps1 -Action doctor
+      - name: Bootstrap (macOS / Linux)
+        if: runner.os != 'Windows'
+        run: bash scripts/bootstrap.sh doctor < /dev/null

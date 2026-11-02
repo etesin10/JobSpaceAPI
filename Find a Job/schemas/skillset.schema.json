@@ -1,0 +1,146 @@
+{
+  "$defs": {
+    "Skill": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Catalog id (e.g. 'python', 'pharmacy-dispensing') or 'custom:<slug>'",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Category"
+        },
+        "level": {
+          "anyOf": [
+            {
+              "maximum": 5,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "1 basic .. 5 expert",
+          "title": "Level"
+        },
+        "years": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Years"
+        },
+        "last_used": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Year",
+          "title": "Last Used"
+        },
+        "source": {
+          "default": "manual",
+          "enum": [
+            "manual",
+            "resume",
+            "csv",
+            "llm"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Resume snippet supporting the skill",
+          "title": "Evidence"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "Skill",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "profile_id": {
+      "title": "Profile Id",
+      "type": "string"
+    },
+    "skills": {
+      "items": {
+        "$ref": "#/$defs/Skill"
+      },
+      "title": "Skills",
+      "type": "array"
+    },
+    "summary": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Short professional summary extracted from the resume",
+      "title": "Summary"
+    },
+    "updated_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Updated At"
+    }
+  },
+  "required": [
+    "profile_id"
+  ],
+  "title": "SkillSet",
+  "type": "object"
+}

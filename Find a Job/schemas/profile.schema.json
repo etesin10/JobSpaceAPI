@@ -1,0 +1,365 @@
+{
+  "$defs": {
+    "LanguageSkill": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "examples": [
+            "en",
+            "es",
+            "fr"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "level": {
+          "default": "B2",
+          "enum": [
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1",
+            "C2",
+            "native"
+          ],
+          "title": "Level",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "title": "LanguageSkill",
+      "type": "object"
+    },
+    "Place": {
+      "additionalProperties": false,
+      "properties": {
+        "country": {
+          "anyOf": [
+            {
+              "examples": [
+                "CA",
+                "MX",
+                "US"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Country"
+        },
+        "region": {
+          "anyOf": [
+            {
+              "examples": [
+                "CA-ON",
+                "MX-NLE",
+                "US-TX"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region"
+        },
+        "city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "City"
+        },
+        "postal_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postal Code"
+        },
+        "lat": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lat"
+        },
+        "lon": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lon"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Original location text as published",
+          "title": "Raw"
+        }
+      },
+      "title": "Place",
+      "type": "object"
+    },
+    "SocialProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "network": {
+          "default": "linkedin",
+          "enum": [
+            "linkedin",
+            "github",
+            "x",
+            "facebook",
+            "instagram",
+            "xing",
+            "website",
+            "other"
+          ],
+          "title": "Network",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Handle"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "SocialProfile",
+      "type": "object"
+    },
+    "WorkAuthorization": {
+      "additionalProperties": false,
+      "properties": {
+        "country": {
+          "examples": [
+            "CA",
+            "MX",
+            "US"
+          ],
+          "title": "Country",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "citizen",
+            "permanent_resident",
+            "work_permit",
+            "open_work_permit",
+            "needs_sponsorship"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "expires": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "YYYY-MM-DD when a permit expires",
+          "title": "Expires"
+        }
+      },
+      "required": [
+        "country",
+        "status"
+      ],
+      "title": "WorkAuthorization",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "pattern": "^[a-z0-9][a-z0-9\\-]{0,62}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Slug; generated from name when omitted",
+      "title": "Id"
+    },
+    "name": {
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "headline": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Headline"
+    },
+    "email": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Email"
+    },
+    "phone": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Phone"
+    },
+    "home": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Place"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "languages": {
+      "items": {
+        "$ref": "#/$defs/LanguageSkill"
+      },
+      "title": "Languages",
+      "type": "array"
+    },
+    "work_authorization": {
+      "items": {
+        "$ref": "#/$defs/WorkAuthorization"
+      },
+      "title": "Work Authorization",
+      "type": "array"
+    },
+    "links": {
+      "items": {
+        "$ref": "#/$defs/SocialProfile"
+      },
+      "title": "Links",
+      "type": "array"
+    },
+    "target_companies_per_criteria": {
+      "default": 50,
+      "description": "Roster size goal used by next_actions",
+      "maximum": 1000,
+      "minimum": 1,
+      "title": "Target Companies Per Criteria",
+      "type": "integer"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    },
+    "created_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Created At"
+    },
+    "updated_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Updated At"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "Profile",
+  "type": "object"
+}

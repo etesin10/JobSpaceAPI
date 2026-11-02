@@ -1,0 +1,136 @@
+# Built-in skills catalog. id is stable; aliases are matched case/accent-insensitively
+# on word boundaries (en / es / fr). Extend freely; unknown skills become custom:<slug>.
+- {id: python, name: Python, category: programming, aliases: [python, python3, pandas, pyspark]}
+- {id: sql, name: SQL, category: data, aliases: [sql, t-sql, tsql, pl/sql, plsql, ansi sql, consultas sql]}
+- {id: java, name: Java, category: programming, aliases: [java, spring boot, springboot]}
+- {id: javascript, name: JavaScript, category: programming, aliases: [javascript, node.js, nodejs, ecmascript]}
+- {id: typescript, name: TypeScript, category: programming, aliases: [typescript]}
+- {id: csharp, name: "C#", category: programming, aliases: ["c#", .net, dotnet, asp.net, ".net core"]}
+- {id: cpp, name: "C++", category: programming, aliases: ["c++", cpp]}
+- {id: go, name: Go, category: programming, aliases: [golang]}
+- {id: rust, name: Rust, category: programming, aliases: [rust lang, rustlang, rust programming]}
+- {id: r-lang, name: R, category: data, aliases: [r programming, rstudio, tidyverse, ggplot2]}
+- {id: scala, name: Scala, category: programming, aliases: [scala]}
+- {id: ruby, name: Ruby, category: programming, aliases: [ruby]}
+- {id: ruby-on-rails, name: Ruby on Rails, category: programming, aliases: [ruby on rails, rails, ror]}
+- {id: php, name: PHP, category: programming, aliases: [php, laravel, symfony]}
+- {id: kotlin, name: Kotlin, category: programming, aliases: [kotlin]}
+- {id: swift, name: Swift/iOS, category: programming, aliases: [swift, swiftui, ios development]}
+- {id: android, name: Android, category: programming, aliases: [android, android sdk, jetpack compose]}
+- {id: graphql, name: GraphQL, category: programming, aliases: [graphql]}
+- {id: microservices, name: Microservices, category: programming, aliases: [microservices, microservicios, distributed systems, sistemas distribuidos]}
+- {id: redis, name: Redis, category: data, aliases: [redis]}
+- {id: elasticsearch, name: Elasticsearch, category: data, aliases: [elasticsearch, opensearch, elk]}
+- {id: observability, name: Observability, category: devops, aliases: [observability, prometheus, grafana, datadog, opentelemetry, new relic, splunk]}
+- {id: sre, name: Site Reliability, category: devops, aliases: [site reliability, sre, incident management, on-call]}
+- {id: bash, name: Bash/Shell, category: programming, aliases: [bash, shell scripting, powershell]}
+- {id: react, name: React, category: frontend, aliases: [react, react.js, reactjs]}
+- {id: angular, name: Angular, category: frontend, aliases: [angular]}
+- {id: html-css, name: HTML/CSS, category: frontend, aliases: [html, css, html5, css3]}
+- {id: rest-api, name: REST APIs, category: programming, aliases: [rest api, restful, rest apis, api rest]}
+- {id: git, name: Git, category: devops, aliases: [git, github, gitlab, bitbucket]}
+- {id: docker, name: Docker, category: devops, aliases: [docker, containers, contenedores]}
+- {id: kubernetes, name: Kubernetes, category: devops, aliases: [kubernetes, k8s, aks, eks, gke]}
+- {id: terraform, name: Terraform, category: devops, aliases: [terraform, infrastructure as code, iac]}
+- {id: ci-cd, name: CI/CD, category: devops, aliases: [ci/cd, cicd, azure devops, github actions, jenkins, gitlab ci]}
+- {id: linux, name: Linux, category: devops, aliases: [linux, unix]}
+- {id: azure, name: Microsoft Azure, category: cloud, aliases: [azure, microsoft azure]}
+- {id: aws, name: AWS, category: cloud, aliases: [aws, amazon web services, s3, ec2, lambda, redshift, glue]}
+- {id: gcp, name: Google Cloud, category: cloud, aliases: [gcp, google cloud, bigquery]}
+- {id: azure-data-factory, name: Azure Data Factory, category: data, aliases: [azure data factory, adf]}
+- {id: databricks, name: Databricks, category: data, aliases: [databricks, delta lake, unity catalog]}
+- {id: spark, name: Apache Spark, category: data, aliases: [spark, apache spark, pyspark, spark sql]}
+- {id: snowflake, name: Snowflake, category: data, aliases: [snowflake]}
+- {id: dbt, name: dbt, category: data, aliases: [dbt, data build tool]}
+- {id: airflow, name: Apache Airflow, category: data, aliases: [airflow, apache airflow]}
+- {id: kafka, name: Kafka, category: data, aliases: [kafka, event streaming, event hubs]}
+- {id: etl, name: ETL/ELT, category: data, aliases: [etl, elt, data pipelines, pipelines de datos, data pipeline]}
+- {id: data-modeling, name: Data Modeling, category: data, aliases: [data modeling, data modelling, modelado de datos, dimensional modeling, star schema, kimball]}
+- {id: data-warehousing, name: Data Warehousing, category: data, aliases: [data warehouse, data warehousing, almacen de datos, lakehouse, data lake]}
+- {id: microsoft-fabric, name: Microsoft Fabric, category: data, aliases: [microsoft fabric, fabric lakehouse, onelake]}
+- {id: synapse, name: Azure Synapse, category: data, aliases: [synapse, azure synapse]}
+- {id: sql-server, name: SQL Server, category: data, aliases: [sql server, mssql, ssis, ssrs, ssas]}
+- {id: postgresql, name: PostgreSQL, category: data, aliases: [postgresql, postgres]}
+- {id: mysql, name: MySQL, category: data, aliases: [mysql, mariadb]}
+- {id: oracle-db, name: Oracle Database, category: data, aliases: [oracle database, oracle db]}
+- {id: mongodb, name: MongoDB, category: data, aliases: [mongodb, nosql, cosmos db, cosmosdb]}
+- {id: power-bi, name: Power BI, category: analytics, aliases: [power bi, powerbi, dax, power query]}
+- {id: tableau, name: Tableau, category: analytics, aliases: [tableau]}
+- {id: looker, name: Looker, category: analytics, aliases: [looker, looker studio]}
+- {id: excel, name: Microsoft Excel, category: office, aliases: [excel, microsoft excel, ms excel, hojas de calculo, spreadsheets, vlookup, pivot tables, tablas dinamicas]}
+- {id: excel-advanced, name: Advanced Excel, category: office, aliases: [advanced excel, excel avanzado, vba, macros]}
+- {id: statistics, name: Statistics, category: analytics, aliases: [statistics, estadistica, statistical analysis, a/b testing, hypothesis testing]}
+- {id: machine-learning, name: Machine Learning, category: ai, aliases: [machine learning, aprendizaje automatico, scikit-learn, sklearn, xgboost]}
+- {id: deep-learning, name: Deep Learning, category: ai, aliases: [deep learning, pytorch, tensorflow, keras, neural networks]}
+- {id: generative-ai, name: Generative AI / LLMs, category: ai, aliases: [generative ai, genai, llm, llms, large language models, openai, prompt engineering, rag, langchain, ia generativa]}
+- {id: mlops, name: MLOps, category: ai, aliases: [mlops, mlflow, model deployment]}
+- {id: nlp, name: NLP, category: ai, aliases: [nlp, natural language processing, procesamiento de lenguaje natural]}
+- {id: data-governance, name: Data Governance, category: data, aliases: [data governance, gobierno de datos, data quality, calidad de datos, data catalog, purview]}
+- {id: erp-sap, name: SAP, category: business-systems, aliases: [sap, sap s/4hana, s4hana, sap erp, sap mm, sap fi]}
+- {id: erp-oracle, name: Oracle ERP, category: business-systems, aliases: [oracle ebs, oracle e-business, oracle fusion, jd edwards, jde]}
+- {id: dynamics-365, name: Microsoft Dynamics 365, category: business-systems, aliases: [dynamics 365, d365, dynamics ax, business central]}
+- {id: salesforce, name: Salesforce, category: business-systems, aliases: [salesforce, sfdc]}
+- {id: power-platform, name: Power Platform, category: business-systems, aliases: [power apps, powerapps, power automate, microsoft flow, power platform]}
+- {id: sharepoint, name: SharePoint, category: office, aliases: [sharepoint]}
+- {id: agile, name: Agile/Scrum, category: management, aliases: [agile, scrum, kanban, agil, metodologias agiles, sprint planning]}
+- {id: jira, name: Jira, category: management, aliases: [jira, confluence]}
+- {id: project-management, name: Project Management, category: management, aliases: [project management, gestion de proyectos, gestion de proyecto, pmp, prince2, project manager, administracion de proyectos]}
+- {id: stakeholder-management, name: Stakeholder Management, category: management, aliases: [stakeholder management, stakeholder engagement, gestion de interesados]}
+- {id: business-analysis, name: Business Analysis, category: management, aliases: [business analysis, requirements gathering, levantamiento de requerimientos, analisis de negocio, user stories]}
+- {id: process-improvement, name: Process Improvement, category: operations, aliases: [process improvement, lean, six sigma, mejora continua, continuous improvement, kaizen]}
+- {id: supply-chain, name: Supply Chain, category: operations, aliases: [supply chain, cadena de suministro, logistics, logistica, procurement, compras, abastecimiento]}
+- {id: inventory-management, name: Inventory Management, category: operations, aliases: [inventory management, inventory control, control de inventario, manejo de inventario, gestion de inventarios, inventario]}
+- {id: manufacturing, name: Manufacturing, category: operations, aliases: [manufacturing, manufactura, produccion, production planning, planeacion de produccion]}
+- {id: quality-assurance, name: Quality Assurance, category: operations, aliases: [quality assurance, quality control, aseguramiento de calidad, control de calidad, iso 9001]}
+- {id: forklift, name: Forklift Operation, category: operations, aliases: [forklift, montacargas, chariot elevateur]}
+- {id: accounting, name: Accounting, category: finance, aliases: [accounting, contabilidad, comptabilite, general ledger, gaap, ifrs, bookkeeping]}
+- {id: accounts-payable, name: Accounts Payable/Receivable, category: finance, aliases: [accounts payable, accounts receivable, cuentas por pagar, cuentas por cobrar, a/p, a/r, invoicing, facturacion]}
+- {id: financial-analysis, name: Financial Analysis, category: finance, aliases: [financial analysis, fp&a, budgeting, forecasting, analisis financiero, presupuestos]}
+- {id: payroll, name: Payroll, category: finance, aliases: [payroll, nomina, nominas, paie]}
+- {id: quickbooks, name: QuickBooks, category: finance, aliases: [quickbooks, sage 50, xero, contpaq, contpaqi]}
+- {id: administrative-support, name: Administrative Support, category: admin, aliases: [administrative support, office administration, apoyo administrativo, asistente administrativo, administrative assistant, office management, clerical, soutien administratif]}
+- {id: scheduling, name: Calendar & Scheduling, category: admin, aliases: [calendar management, scheduling, agenda, gestion de agenda, appointment scheduling, programacion de citas]}
+- {id: data-entry, name: Data Entry, category: admin, aliases: [data entry, captura de datos, captura de informacion, saisie de donnees]}
+- {id: records-management, name: Records Management, category: admin, aliases: [records management, filing, archivo, document management, gestion documental]}
+- {id: microsoft-office, name: Microsoft Office, category: office, aliases: [microsoft office, ms office, office 365, microsoft 365, word, outlook, powerpoint, paqueteria office]}
+- {id: google-workspace, name: Google Workspace, category: office, aliases: [google workspace, g suite, google sheets, google docs]}
+- {id: customer-service, name: Customer Service, category: service, aliases: [customer service, atencion al cliente, servicio al cliente, service a la clientele, client service, customer support]}
+- {id: reception, name: Reception / Front Desk, category: service, aliases: [receptionist, front desk, recepcion, recepcionista, reception]}
+- {id: phone-etiquette, name: Phone Handling, category: service, aliases: [phone etiquette, multi-line phone, answering phones, atencion telefonica, call handling]}
+- {id: crm, name: CRM, category: business-systems, aliases: [crm, hubspot, zoho crm]}
+- {id: sales, name: Sales, category: commercial, aliases: [sales, ventas, business development, desarrollo de negocios, account management, b2b sales]}
+- {id: marketing, name: Marketing, category: commercial, aliases: [marketing, digital marketing, mercadotecnia, seo, sem, social media marketing, google ads]}
+- {id: recruiting, name: Recruiting, category: hr, aliases: [recruiting, recruitment, reclutamiento, seleccion de personal, talent acquisition, sourcing]}
+- {id: hr-admin, name: HR Administration, category: hr, aliases: [human resources administration, recursos humanos, hr administration, employee relations, hris, administracion de personal]}
+- {id: pharmacy-dispensing, name: Prescription Dispensing, category: pharmacy, aliases: [dispensing, prescription processing, dispensacion, dispensacion de medicamentos, surtido de recetas, filling prescriptions, preparation des ordonnances]}
+- {id: pharmacy-inventory, name: Pharmacy Inventory, category: pharmacy, aliases: [pharmacy inventory, medication inventory, inventario de medicamentos, drug inventory]}
+- {id: pharmacology, name: Pharmacology Knowledge, category: pharmacy, aliases: [pharmacology, farmacologia, drug interactions, medication knowledge, conocimiento de medicamentos]}
+- {id: pharmacy-software, name: Pharmacy Software, category: pharmacy, aliases: [kroll, filware, nexxsys, pharmanet, pharmacy management system, rx software, healthwatch]}
+- {id: compounding, name: Compounding, category: pharmacy, aliases: [compounding, preparaciones magistrales, sterile compounding, non-sterile compounding]}
+- {id: insurance-billing, name: Insurance Billing / Claims, category: healthcare, aliases: [insurance billing, third-party billing, claims processing, adjudication, facturacion de seguros, medical billing]}
+- {id: patient-care, name: Patient Care, category: healthcare, aliases: [patient care, atencion al paciente, patient service, soins aux patients]}
+- {id: medical-terminology, name: Medical Terminology, category: healthcare, aliases: [medical terminology, terminologia medica]}
+- {id: hipaa-privacy, name: Health Privacy (HIPAA/PHIPA), category: healthcare, aliases: [hipaa, phipa, pipeda, health privacy, confidencialidad del paciente]}
+- {id: first-aid-cpr, name: First Aid / CPR, category: healthcare, aliases: [first aid, cpr, bls, primeros auxilios, rcp]}
+- {id: cash-handling, name: Cash Handling / POS, category: retail, aliases: [cash handling, point of sale, pos, manejo de caja, cajero, cashier, caisse]}
+- {id: retail-merchandising, name: Merchandising, category: retail, aliases: [merchandising, visual merchandising, acomodo de mercancia, stocking shelves]}
+- {id: food-safety, name: Food Safety, category: hospitality, aliases: [food safety, food handler, manipulacion de alimentos, haccp, servsafe]}
+- {id: driving-license, name: Driver's License, category: general, aliases: [driver's license, drivers license, licencia de manejo, licencia de conducir, permis de conduire]}
+- {id: bilingual-en-es, name: Bilingual English/Spanish, category: language, aliases: [bilingual english spanish, bilingue ingles espanol, bilingual spanish, spanish speaking, bilingue]}
+- {id: bilingual-en-fr, name: Bilingual English/French, category: language, aliases: [bilingual english french, bilingual french, french speaking, bilingue anglais francais]}
+- {id: communication, name: Communication, category: soft, aliases: [communication skills, comunicacion efectiva, habilidades de comunicacion, written communication, verbal communication]}
+- {id: teamwork, name: Teamwork, category: soft, aliases: [teamwork, trabajo en equipo, team player, travail d'equipe]}
+- {id: leadership, name: Leadership, category: soft, aliases: [leadership, liderazgo, team lead, people management, gestion de equipos, team management]}
+- {id: problem-solving, name: Problem Solving, category: soft, aliases: [problem solving, resolucion de problemas, troubleshooting, analytical thinking, pensamiento analitico]}
+- {id: time-management, name: Time Management, category: soft, aliases: [time management, gestion del tiempo, multitasking, organizational skills, organizacion]}
+- {id: attention-to-detail, name: Attention to Detail, category: soft, aliases: [attention to detail, detail-oriented, detail oriented, atencion al detalle, minucioso]}
+- {id: cybersecurity, name: Cybersecurity, category: it, aliases: [cybersecurity, cyber security, ciberseguridad, information security, seguridad informatica, siem, soc analyst]}
+- {id: networking, name: Networking, category: it, aliases: [networking, tcp/ip, cisco, ccna, redes, firewalls, vpn]}
+- {id: it-support, name: IT Support, category: it, aliases: [it support, help desk, helpdesk, soporte tecnico, desktop support, service desk, itil]}
+- {id: active-directory, name: Active Directory / Entra ID, category: it, aliases: [active directory, entra id, azure ad, intune, group policy]}
+- {id: autocad, name: AutoCAD, category: engineering, aliases: [autocad, cad, solidworks, revit, inventor]}
+- {id: plc, name: PLC / Automation, category: engineering, aliases: [plc, allen-bradley, siemens tia, scada, automatizacion industrial, industrial automation]}
+- {id: woodworking, name: Woodworking / Cabinetry, category: trades, aliases: [woodworking, cabinetry, carpinteria, ebanisteria, cabinet making, cnc router]}
+- {id: cnc, name: CNC Machining, category: trades, aliases: [cnc, cnc machining, cnc operator, maquinado cnc, torno cnc]}
+- {id: welding, name: Welding, category: trades, aliases: [welding, soldadura, mig, tig, soudure]}
+- {id: osha-safety, name: Workplace Safety, category: operations, aliases: [osha, whmis, seguridad industrial, workplace safety, health and safety, ehs]}

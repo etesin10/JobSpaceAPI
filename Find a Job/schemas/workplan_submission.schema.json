@@ -1,0 +1,1755 @@
+{
+  "$defs": {
+    "AtsRef": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "greenhouse",
+            "lever",
+            "ashby",
+            "smartrecruiters",
+            "workable",
+            "workday",
+            "icims",
+            "taleo",
+            "successfactors",
+            "bamboohr",
+            "recruitee",
+            "personio",
+            "teamtailor",
+            "other"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "board": {
+          "description": "Board token / company slug used by the ATS API",
+          "title": "Board",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "type",
+        "board"
+      ],
+      "title": "AtsRef",
+      "type": "object"
+    },
+    "CompanyLink": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "new",
+          "enum": [
+            "new",
+            "roles_searched",
+            "exhausted",
+            "excluded",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "excluded": {
+          "default": false,
+          "title": "Excluded",
+          "type": "boolean"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "criteria_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Criteria Ids",
+          "type": "array"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Run Id"
+        },
+        "added_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Added At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated At"
+        }
+      },
+      "title": "CompanyLink",
+      "type": "object"
+    },
+    "ContactLink": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "found",
+          "enum": [
+            "found",
+            "verified",
+            "rejected",
+            "contacted",
+            "replied"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "role_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role Id"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Run Id"
+        },
+        "added_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Added At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated At"
+        }
+      },
+      "title": "ContactLink",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "kind": {
+          "default": "posting",
+          "enum": [
+            "posting",
+            "ats_api",
+            "job_api",
+            "search_result",
+            "company_site",
+            "profile",
+            "manual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "snippet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snippet"
+        },
+        "fetched_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fetched At"
+        },
+        "checked_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checked At"
+        },
+        "status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "ok",
+            "failed",
+            "blocked",
+            "external"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "http_status": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Http Status"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FetchStatus": {
+      "additionalProperties": false,
+      "description": "Last attempt to read something from the web (a company's job board, a posting page).",
+      "properties": {
+        "ok": {
+          "default": true,
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "At"
+        },
+        "what": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "board | posting | careers_page | review",
+          "title": "What"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "http_status": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Http Status"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "failures": {
+          "default": 0,
+          "description": "Consecutive failures; 0 after a success",
+          "title": "Failures",
+          "type": "integer"
+        },
+        "partial": {
+          "default": false,
+          "description": "Read, but some pages failed or the listing was cut short",
+          "title": "Partial",
+          "type": "boolean"
+        },
+        "next_retry_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Retry At"
+        }
+      },
+      "title": "FetchStatus",
+      "type": "object"
+    },
+    "MatchResult": {
+      "additionalProperties": false,
+      "properties": {
+        "score": {
+          "default": 0,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Score",
+          "type": "number"
+        },
+        "passed": {
+          "default": true,
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "failed": {
+          "description": "Hard constraint / must rule failures",
+          "items": {
+            "type": "string"
+          },
+          "title": "Failed",
+          "type": "array"
+        },
+        "warnings": {
+          "description": "Unknown values accepted via include_unknown",
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "components": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Components",
+          "type": "object"
+        },
+        "matched_skills": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Matched Skills",
+          "type": "array"
+        },
+        "missing_skills": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Skills",
+          "type": "array"
+        },
+        "rules_hit": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Rules Hit",
+          "type": "array"
+        },
+        "keywords": {
+          "description": "JD keywords to mirror in a tailored resume",
+          "items": {
+            "type": "string"
+          },
+          "title": "Keywords",
+          "type": "array"
+        },
+        "jd_summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Jd Summary"
+        }
+      },
+      "title": "MatchResult",
+      "type": "object"
+    },
+    "Place": {
+      "additionalProperties": false,
+      "properties": {
+        "country": {
+          "anyOf": [
+            {
+              "examples": [
+                "CA",
+                "MX",
+                "US"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Country"
+        },
+        "region": {
+          "anyOf": [
+            {
+              "examples": [
+                "CA-ON",
+                "MX-NLE",
+                "US-TX"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region"
+        },
+        "city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "City"
+        },
+        "postal_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postal Code"
+        },
+        "lat": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lat"
+        },
+        "lon": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lon"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Original location text as published",
+          "title": "Raw"
+        }
+      },
+      "title": "Place",
+      "type": "object"
+    },
+    "RoleLink": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "found",
+          "enum": [
+            "found",
+            "verified",
+            "scored",
+            "contacts_searched",
+            "closed",
+            "rejected"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "stage": {
+          "default": "none",
+          "enum": [
+            "none",
+            "shortlisted",
+            "applied",
+            "interview",
+            "offer",
+            "hired",
+            "declined",
+            "rejected",
+            "withdrawn"
+          ],
+          "title": "Stage",
+          "type": "string"
+        },
+        "excluded": {
+          "default": false,
+          "title": "Excluded",
+          "type": "boolean"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "criteria_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Criteria Id"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Score"
+        },
+        "match": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MatchResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "review": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RoleReview"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "AI review for this profile (review_role step)"
+        },
+        "run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Run Id"
+        },
+        "added_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Added At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated At"
+        }
+      },
+      "title": "RoleLink",
+      "type": "object"
+    },
+    "RoleReview": {
+      "additionalProperties": false,
+      "description": "AI review of a posting against the candidate (review_role step).",
+      "properties": {
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "At"
+        },
+        "fit": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fit"
+        },
+        "required_skills": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Skills",
+          "type": "array"
+        },
+        "nice_to_have": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Nice To Have",
+          "type": "array"
+        },
+        "gaps": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Gaps",
+          "type": "array"
+        },
+        "concerns": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Concerns",
+          "type": "array"
+        },
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Summary"
+        }
+      },
+      "title": "RoleReview",
+      "type": "object"
+    },
+    "Salary": {
+      "additionalProperties": false,
+      "properties": {
+        "min": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min"
+        },
+        "max": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "examples": [
+                "CAD",
+                "MXN",
+                "USD"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        },
+        "period": {
+          "default": "year",
+          "enum": [
+            "hour",
+            "day",
+            "week",
+            "month",
+            "year"
+          ],
+          "title": "Period",
+          "type": "string"
+        }
+      },
+      "title": "Salary",
+      "type": "object"
+    },
+    "SocialProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "network": {
+          "default": "linkedin",
+          "enum": [
+            "linkedin",
+            "github",
+            "x",
+            "facebook",
+            "instagram",
+            "xing",
+            "website",
+            "other"
+          ],
+          "title": "Network",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Handle"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "SocialProfile",
+      "type": "object"
+    },
+    "SponsorshipFact": {
+      "additionalProperties": false,
+      "properties": {
+        "program": {
+          "enum": [
+            "CA_LMIA",
+            "CA_GTS",
+            "CA_IEC",
+            "CA_CUSMA",
+            "US_H1B",
+            "US_TN",
+            "US_L1",
+            "US_O1",
+            "US_GREEN_CARD",
+            "UK_SKILLED_WORKER",
+            "MX_WORK_VISA",
+            "EU_BLUE_CARD",
+            "AU_TSS",
+            "OTHER"
+          ],
+          "title": "Program",
+          "type": "string"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "yes",
+            "no",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "As Of"
+        }
+      },
+      "required": [
+        "program"
+      ],
+      "title": "SponsorshipFact",
+      "type": "object"
+    },
+    "WorkplanCompany": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "c:<domain>; computed when omitted",
+          "title": "Id"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Registrable domain, e.g. shopify.com",
+          "title": "Domain"
+        },
+        "website": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Website"
+        },
+        "careers_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Careers Url"
+        },
+        "ats": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AtsRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "hq": {
+          "anyOf": [
+            {
+              "examples": [
+                "CA",
+                "MX",
+                "US"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hq"
+        },
+        "countries": {
+          "description": "Countries where it hires",
+          "items": {
+            "examples": [
+              "CA",
+              "MX",
+              "US"
+            ],
+            "type": "string"
+          },
+          "title": "Countries",
+          "type": "array"
+        },
+        "industries": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Industries",
+          "type": "array"
+        },
+        "size": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Size"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "linkedin_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Linkedin Url"
+        },
+        "sponsorship": {
+          "items": {
+            "$ref": "#/$defs/SponsorshipFact"
+          },
+          "title": "Sponsorship",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "fetch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FetchStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Last attempt to read this company's job board / careers page"
+        },
+        "first_seen": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Seen"
+        },
+        "last_seen": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Seen"
+        },
+        "pipeline": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CompanyLink"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/$defs/WorkplanRole"
+          },
+          "title": "Roles",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "WorkplanCompany",
+      "type": "object"
+    },
+    "WorkplanContact": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ct:<profile-url> / ct:email:<email>; computed when omitted",
+          "title": "Id"
+        },
+        "company_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Company Id"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "type": {
+          "default": "other",
+          "enum": [
+            "recruiter",
+            "talent_acquisition",
+            "hr",
+            "hiring_manager",
+            "team_member",
+            "executive",
+            "other"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "profiles": {
+          "items": {
+            "$ref": "#/$defs/SocialProfile"
+          },
+          "title": "Profiles",
+          "type": "array"
+        },
+        "work_email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Work Email"
+        },
+        "phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Only business numbers published by the company",
+          "title": "Phone"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "lawful_basis": {
+          "default": "legitimate_interest:job_application",
+          "title": "Lawful Basis",
+          "type": "string"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "first_seen": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Seen"
+        },
+        "last_seen": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Seen"
+        },
+        "pipeline": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContactLink"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "WorkplanContact",
+      "type": "object"
+    },
+    "WorkplanRole": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "r:<source>:<source_id> or r:url:<hash>; computed when omitted",
+          "title": "Id"
+        },
+        "company_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Company Id"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "description": "Canonical posting URL (evidence)",
+          "title": "Url",
+          "type": "string"
+        },
+        "apply_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Apply Url"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "location": {
+          "$ref": "#/$defs/Place"
+        },
+        "locations": {
+          "description": "Extra locations for multi-site postings",
+          "items": {
+            "$ref": "#/$defs/Place"
+          },
+          "title": "Locations",
+          "type": "array"
+        },
+        "work_mode": {
+          "anyOf": [
+            {
+              "enum": [
+                "remote",
+                "hybrid",
+                "onsite"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Work Mode"
+        },
+        "remote_eligibility": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Remote Eligibility",
+          "type": "array"
+        },
+        "employment_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "full_time",
+                "part_time",
+                "contract",
+                "temporary",
+                "internship",
+                "freelance",
+                "seasonal"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Employment Type"
+        },
+        "seniority": {
+          "anyOf": [
+            {
+              "enum": [
+                "intern",
+                "entry",
+                "junior",
+                "mid",
+                "senior",
+                "lead",
+                "manager",
+                "director",
+                "executive"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seniority"
+        },
+        "salary": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Salary"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "languages": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Languages",
+          "type": "array"
+        },
+        "skills": {
+          "description": "Skill ids required/mentioned",
+          "items": {
+            "type": "string"
+          },
+          "title": "Skills",
+          "type": "array"
+        },
+        "department": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Department"
+        },
+        "posted_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Posted At"
+        },
+        "status": {
+          "default": "open",
+          "enum": [
+            "open",
+            "closed",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Id"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "fetch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FetchStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Last attempt to open this posting (details, recheck, review)"
+        },
+        "first_seen": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Seen"
+        },
+        "last_seen": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Seen"
+        },
+        "pipeline": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RoleLink"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "contacts": {
+          "items": {
+            "$ref": "#/$defs/WorkplanContact"
+          },
+          "title": "Contacts",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "url"
+      ],
+      "title": "WorkplanRole",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "default": "jobfinder.workplan/v1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "agent": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Who produced this, e.g. 'codex/gpt-5' or 'human'",
+      "title": "Agent"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Run Id"
+    },
+    "criteria_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Criteria these results were searched for",
+      "title": "Criteria Id"
+    },
+    "companies": {
+      "items": {
+        "$ref": "#/$defs/WorkplanCompany"
+      },
+      "title": "Companies",
+      "type": "array"
+    },
+    "strategy_updates": {
+      "additionalProperties": true,
+      "description": "criteria_id -> SearchStrategy patch (only search_strategy is AI-writable)",
+      "title": "Strategy Updates",
+      "type": "object"
+    },
+    "require_evidence": {
+      "default": true,
+      "title": "Require Evidence",
+      "type": "boolean"
+    }
+  },
+  "title": "WorkplanSubmission",
+  "type": "object"
+}

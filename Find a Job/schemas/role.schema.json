@@ -1,0 +1,646 @@
+{
+  "$defs": {
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "kind": {
+          "default": "posting",
+          "enum": [
+            "posting",
+            "ats_api",
+            "job_api",
+            "search_result",
+            "company_site",
+            "profile",
+            "manual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "snippet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snippet"
+        },
+        "fetched_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fetched At"
+        },
+        "checked_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checked At"
+        },
+        "status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "ok",
+            "failed",
+            "blocked",
+            "external"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "http_status": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Http Status"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FetchStatus": {
+      "additionalProperties": false,
+      "description": "Last attempt to read something from the web (a company's job board, a posting page).",
+      "properties": {
+        "ok": {
+          "default": true,
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "At"
+        },
+        "what": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "board | posting | careers_page | review",
+          "title": "What"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "http_status": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Http Status"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "failures": {
+          "default": 0,
+          "description": "Consecutive failures; 0 after a success",
+          "title": "Failures",
+          "type": "integer"
+        },
+        "partial": {
+          "default": false,
+          "description": "Read, but some pages failed or the listing was cut short",
+          "title": "Partial",
+          "type": "boolean"
+        },
+        "next_retry_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Retry At"
+        }
+      },
+      "title": "FetchStatus",
+      "type": "object"
+    },
+    "Place": {
+      "additionalProperties": false,
+      "properties": {
+        "country": {
+          "anyOf": [
+            {
+              "examples": [
+                "CA",
+                "MX",
+                "US"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Country"
+        },
+        "region": {
+          "anyOf": [
+            {
+              "examples": [
+                "CA-ON",
+                "MX-NLE",
+                "US-TX"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region"
+        },
+        "city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "City"
+        },
+        "postal_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postal Code"
+        },
+        "lat": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lat"
+        },
+        "lon": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lon"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Original location text as published",
+          "title": "Raw"
+        }
+      },
+      "title": "Place",
+      "type": "object"
+    },
+    "Salary": {
+      "additionalProperties": false,
+      "properties": {
+        "min": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min"
+        },
+        "max": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "examples": [
+                "CAD",
+                "MXN",
+                "USD"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        },
+        "period": {
+          "default": "year",
+          "enum": [
+            "hour",
+            "day",
+            "week",
+            "month",
+            "year"
+          ],
+          "title": "Period",
+          "type": "string"
+        }
+      },
+      "title": "Salary",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "r:<source>:<source_id> or r:url:<hash>; computed when omitted",
+      "title": "Id"
+    },
+    "company_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Company Id"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "url": {
+      "description": "Canonical posting URL (evidence)",
+      "title": "Url",
+      "type": "string"
+    },
+    "apply_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Apply Url"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
+    },
+    "location": {
+      "$ref": "#/$defs/Place"
+    },
+    "locations": {
+      "description": "Extra locations for multi-site postings",
+      "items": {
+        "$ref": "#/$defs/Place"
+      },
+      "title": "Locations",
+      "type": "array"
+    },
+    "work_mode": {
+      "anyOf": [
+        {
+          "enum": [
+            "remote",
+            "hybrid",
+            "onsite"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Work Mode"
+    },
+    "remote_eligibility": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remote Eligibility",
+      "type": "array"
+    },
+    "employment_type": {
+      "anyOf": [
+        {
+          "enum": [
+            "full_time",
+            "part_time",
+            "contract",
+            "temporary",
+            "internship",
+            "freelance",
+            "seasonal"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Employment Type"
+    },
+    "seniority": {
+      "anyOf": [
+        {
+          "enum": [
+            "intern",
+            "entry",
+            "junior",
+            "mid",
+            "senior",
+            "lead",
+            "manager",
+            "director",
+            "executive"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Seniority"
+    },
+    "salary": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Salary"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "languages": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Languages",
+      "type": "array"
+    },
+    "skills": {
+      "description": "Skill ids required/mentioned",
+      "items": {
+        "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+    },
+    "department": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Department"
+    },
+    "posted_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Posted At"
+    },
+    "status": {
+      "default": "open",
+      "enum": [
+        "open",
+        "closed",
+        "unknown"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "source": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source"
+    },
+    "source_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Id"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "fetch": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FetchStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Last attempt to open this posting (details, recheck, review)"
+    },
+    "first_seen": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "First Seen"
+    },
+    "last_seen": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Seen"
+    }
+  },
+  "required": [
+    "title",
+    "url"
+  ],
+  "title": "Role",
+  "type": "object"
+}

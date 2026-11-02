@@ -1,0 +1,528 @@
+{
+  "$defs": {
+    "AtsRef": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "greenhouse",
+            "lever",
+            "ashby",
+            "smartrecruiters",
+            "workable",
+            "workday",
+            "icims",
+            "taleo",
+            "successfactors",
+            "bamboohr",
+            "recruitee",
+            "personio",
+            "teamtailor",
+            "other"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "board": {
+          "description": "Board token / company slug used by the ATS API",
+          "title": "Board",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "type",
+        "board"
+      ],
+      "title": "AtsRef",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "kind": {
+          "default": "posting",
+          "enum": [
+            "posting",
+            "ats_api",
+            "job_api",
+            "search_result",
+            "company_site",
+            "profile",
+            "manual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "snippet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snippet"
+        },
+        "fetched_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fetched At"
+        },
+        "checked_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checked At"
+        },
+        "status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "ok",
+            "failed",
+            "blocked",
+            "external"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "http_status": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Http Status"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FetchStatus": {
+      "additionalProperties": false,
+      "description": "Last attempt to read something from the web (a company's job board, a posting page).",
+      "properties": {
+        "ok": {
+          "default": true,
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "At"
+        },
+        "what": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "board | posting | careers_page | review",
+          "title": "What"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "http_status": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Http Status"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "failures": {
+          "default": 0,
+          "description": "Consecutive failures; 0 after a success",
+          "title": "Failures",
+          "type": "integer"
+        },
+        "partial": {
+          "default": false,
+          "description": "Read, but some pages failed or the listing was cut short",
+          "title": "Partial",
+          "type": "boolean"
+        },
+        "next_retry_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Retry At"
+        }
+      },
+      "title": "FetchStatus",
+      "type": "object"
+    },
+    "SponsorshipFact": {
+      "additionalProperties": false,
+      "properties": {
+        "program": {
+          "enum": [
+            "CA_LMIA",
+            "CA_GTS",
+            "CA_IEC",
+            "CA_CUSMA",
+            "US_H1B",
+            "US_TN",
+            "US_L1",
+            "US_O1",
+            "US_GREEN_CARD",
+            "UK_SKILLED_WORKER",
+            "MX_WORK_VISA",
+            "EU_BLUE_CARD",
+            "AU_TSS",
+            "OTHER"
+          ],
+          "title": "Program",
+          "type": "string"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "yes",
+            "no",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "As Of"
+        }
+      },
+      "required": [
+        "program"
+      ],
+      "title": "SponsorshipFact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "c:<domain>; computed when omitted",
+      "title": "Id"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "domain": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Registrable domain, e.g. shopify.com",
+      "title": "Domain"
+    },
+    "website": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Website"
+    },
+    "careers_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Careers Url"
+    },
+    "ats": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AtsRef"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "hq": {
+      "anyOf": [
+        {
+          "examples": [
+            "CA",
+            "MX",
+            "US"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Hq"
+    },
+    "countries": {
+      "description": "Countries where it hires",
+      "items": {
+        "examples": [
+          "CA",
+          "MX",
+          "US"
+        ],
+        "type": "string"
+      },
+      "title": "Countries",
+      "type": "array"
+    },
+    "industries": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Industries",
+      "type": "array"
+    },
+    "size": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Size"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
+    },
+    "linkedin_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Linkedin Url"
+    },
+    "sponsorship": {
+      "items": {
+        "$ref": "#/$defs/SponsorshipFact"
+      },
+      "title": "Sponsorship",
+      "type": "array"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "source": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source"
+    },
+    "fetch": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FetchStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Last attempt to read this company's job board / careers page"
+    },
+    "first_seen": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "First Seen"
+    },
+    "last_seen": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Seen"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "Company",
+  "type": "object"
+}

@@ -1,0 +1,65 @@
+{
+  "format": "jobfinder.profile-bundle/v1",
+  "profile": {
+    "id": "example-data-mx",
+    "name": "Example – Data Engineer (Mexico)",
+    "headline": "Data Engineer · Python, SQL, Azure",
+    "home": {"country": "MX", "region": "MX-NLE", "city": "Monterrey"},
+    "languages": [{"code": "es", "level": "native"}, {"code": "en", "level": "C1"}],
+    "work_authorization": [{"country": "MX", "status": "citizen"}],
+    "target_companies_per_criteria": 60
+  },
+  "criteria": [
+    {
+      "name": "Data engineer – Monterrey (onsite/hybrid)",
+      "constraints": {
+        "locations": [{"country": "MX", "region": "MX-NLE", "city": "Monterrey", "radius_km": 40}],
+        "work_mode": ["hybrid", "onsite"],
+        "employment_type": ["full_time", "contract"],
+        "seniority": ["mid", "senior", "lead"],
+        "salary": {"min": 55000, "currency": "MXN", "period": "month"},
+        "languages": [{"code": "en", "min": "B2"}],
+        "posted_within_days": 30
+      },
+      "targets": {
+        "occupations": [{"system": "ISCO-08", "code": "2521"}, {"system": "SOC-2018", "code": "15-1243"}],
+        "titles": ["data engineer", "ingeniero de datos", "analytics engineer", "ETL developer"],
+        "activities": ["build data pipelines", "model data warehouses"],
+        "keywords": ["lakehouse", "Azure"]
+      },
+      "rules": {
+        "must": [{"field": "skills", "op": "any", "value": ["SQL", "Python"], "label": "core language"}],
+        "should": [
+          {"field": "skills", "op": "any", "value": ["Azure Data Factory", "Databricks", "Spark"], "weight": 3, "label": "cloud data stack"},
+          {"field": "skills", "op": "any", "value": ["Power BI", "dbt", "Airflow"], "weight": 1},
+          {"field": "description", "op": "contains", "value": ["inglés", "english"], "weight": 1, "label": "English role"}
+        ],
+        "must_not": [{"field": "title", "op": "contains", "value": ["intern", "becario", "practicante"]}]
+      }
+    },
+    {
+      "name": "Data engineer – remote for LATAM",
+      "constraints": {
+        "locations": [{"country": "MX"}],
+        "work_mode": ["remote"],
+        "remote_eligibility": ["MX", "LATAM"],
+        "salary": {"min": 45000, "currency": "USD", "period": "year"},
+        "posted_within_days": 21
+      },
+      "targets": {"titles": ["data engineer", "senior data engineer", "analytics engineer"]},
+      "rules": {"should": [{"field": "skills", "op": "any", "value": ["Python", "SQL", "Spark", "Airflow"], "weight": 2}]}
+    }
+  ],
+  "skills": {
+    "profile_id": "example-data-mx",
+    "summary": "Data engineer with 6 years building ETL pipelines on Azure.",
+    "skills": [
+      {"id": "python", "name": "Python", "level": 4, "years": 6},
+      {"id": "sql", "name": "SQL", "level": 5, "years": 8},
+      {"id": "azure-data-factory", "name": "Azure Data Factory", "level": 4, "years": 3},
+      {"id": "databricks", "name": "Databricks", "level": 3, "years": 2},
+      {"id": "power-bi", "name": "Power BI", "level": 3, "years": 4},
+      {"id": "etl", "name": "ETL/ELT", "level": 4, "years": 6}
+    ]
+  }
+}

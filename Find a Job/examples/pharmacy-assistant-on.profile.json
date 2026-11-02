@@ -1,0 +1,50 @@
+{
+  "format": "jobfinder.profile-bundle/v1",
+  "profile": {
+    "id": "example-pharmacy-on",
+    "name": "Example – Pharmacy Assistant (Ontario)",
+    "headline": "Pharmacy Assistant · Kroll · bilingual EN/ES",
+    "home": {"country": "CA", "region": "CA-ON", "city": "Mississauga"},
+    "languages": [{"code": "en", "level": "C1"}, {"code": "es", "level": "native"}],
+    "work_authorization": [{"country": "CA", "status": "needs_sponsorship"}],
+    "target_companies_per_criteria": 40
+  },
+  "criteria": [
+    {
+      "name": "Pharmacy assistant – GTA, LMIA",
+      "constraints": {
+        "locations": [
+          {"country": "CA", "region": "CA-ON", "city": "Toronto", "radius_km": 50},
+          {"country": "CA", "region": "CA-ON", "city": "Mississauga", "radius_km": 30}
+        ],
+        "work_mode": ["onsite"],
+        "employment_type": ["full_time", "part_time"],
+        "salary": {"min": 18, "currency": "CAD", "period": "hour"},
+        "sponsorship": {"need": "preferred", "programs": ["CA_LMIA"]},
+        "posted_within_days": 30
+      },
+      "targets": {
+        "occupations": [{"system": "NOC-2021", "code": "33103"}, {"system": "ISCO-08", "code": "3213"}],
+        "titles": ["pharmacy assistant", "pharmacy technician assistant", "pharmacy clerk"],
+        "activities": ["dispense prescriptions", "manage pharmacy inventory", "serve patients at the counter"]
+      },
+      "rules": {
+        "should": [
+          {"field": "skills", "op": "any", "value": ["dispensing", "Kroll", "insurance billing"], "weight": 3},
+          {"field": "description", "op": "contains", "value": ["spanish", "bilingual"], "weight": 1, "label": "language advantage"}
+        ],
+        "must_not": [{"field": "title", "op": "contains", "value": ["pharmacist manager", "registered pharmacist"]}]
+      }
+    }
+  ],
+  "skills": {
+    "profile_id": "example-pharmacy-on",
+    "skills": [
+      {"id": "pharmacy-dispensing", "name": "Prescription Dispensing", "level": 4, "years": 3},
+      {"id": "pharmacy-software", "name": "Pharmacy Software", "level": 3, "years": 2},
+      {"id": "customer-service", "name": "Customer Service", "level": 5, "years": 6},
+      {"id": "cash-handling", "name": "Cash Handling / POS", "level": 4, "years": 5},
+      {"id": "pharmacy-inventory", "name": "Pharmacy Inventory", "level": 3, "years": 3}
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "enum": [
+        "find_roles",
+        "find_companies",
+        "find_contacts",
+        "autopilot",
+        "recheck",
+        "guided",
+        "review_roles"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "criteria_ids": {
+      "description": "Empty = all active criteria",
+      "items": {
+        "type": "string"
+      },
+      "title": "Criteria Ids",
+      "type": "array"
+    },
+    "company_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Company Ids",
+      "type": "array"
+    },
+    "role_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Role Ids",
+      "type": "array"
+    },
+    "scope": {
+      "default": "new",
+      "description": "find_roles: companies not searched yet (+ failed ones due for retry) | every company in the roster (refresh) | only companies whose board could not be read",
+      "enum": [
+        "new",
+        "all",
+        "failed"
+      ],
+      "title": "Scope",
+      "type": "string"
+    },
+    "limit": {
+      "anyOf": [
+        {
+          "maximum": 1000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Limit"
+    },
+    "use_llm": {
+      "default": true,
+      "title": "Use Llm",
+      "type": "boolean"
+    },
+    "budget": {
+      "additionalProperties": true,
+      "title": "Budget",
+      "type": "object"
+    }
+  },
+  "required": [
+    "kind"
+  ],
+  "title": "RunRequest",
+  "type": "object"
+}

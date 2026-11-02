@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# secrets and local runtime data
+.env
+*.db
+*.db-wal
+*.db-shm
+/data/
+/exports/
+/workspace/
+~$*.xlsx

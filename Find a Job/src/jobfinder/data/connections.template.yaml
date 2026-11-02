@@ -1,0 +1,130 @@
+# JobFinder connections file
+# ---------------------------------------------------------------------------
+# Edit while the app is running: changes are picked up automatically.
+# If the file becomes invalid the last good version keeps running and the
+# error is shown on the dashboard (Settings > Connections).
+#
+# Secrets: never paste keys here. Put them in the .env file next to the
+# config folder and reference them as ${NAME}. ${NAME:-default} is supported.
+# ---------------------------------------------------------------------------
+version: 1
+
+llm:
+  # Any model LiteLLM supports can be added. provider = openai | azure | ollama |
+  # lmstudio | deepseek | anthropic | gemini | openrouter | groq | mistral |
+  # openai_compatible (any server exposing the OpenAI API, set api_base).
+  models:
+    openai_mini:
+      provider: openai
+      model: ${OPENAI_MODEL:-gpt-4.1-mini}
+      api_key: ${OPENAI_API_KEY}
+    openai_large:
+      provider: openai
+      model: ${OPENAI_MODEL_LARGE:-gpt-4.1}
+      api_key: ${OPENAI_API_KEY}
+    claude:
+      provider: anthropic
+      model: ${ANTHROPIC_MODEL:-claude-sonnet-4-5}
+      api_key: ${ANTHROPIC_API_KEY}
+    gemini:
+      provider: gemini
+      model: ${GEMINI_MODEL:-gemini-2.5-flash}
+      api_key: ${GEMINI_API_KEY}
+    azure:
+      provider: azure
+      model: ${AZURE_OPENAI_DEPLOYMENT:-gpt-4o-mini}
+      api_base: ${AZURE_OPENAI_ENDPOINT}
+      api_key: ${AZURE_OPENAI_API_KEY}
+      api_version: ${AZURE_OPENAI_API_VERSION:-2024-10-21}
+    deepseek:
+      provider: deepseek
+      model: ${DEEPSEEK_MODEL:-deepseek-chat}
+      api_key: ${DEEPSEEK_API_KEY}
+    local:
+      provider: ollama
+      model: ${OLLAMA_MODEL:-qwen2.5:7b}
+      api_base: ${OLLAMA_BASE_URL:-http://localhost:11434}
+      timeout_s: 300
+    lmstudio:
+      provider: lmstudio
+      model: ${LMSTUDIO_MODEL:-local-model}
+      api_base: ${LMSTUDIO_BASE_URL:-http://localhost:1234/v1}
+      timeout_s: 300
+    # Models that search the web themselves (used by the web_search step in steps.yaml).
+    openai_search:
+      provider: openai
+      model: ${OPENAI_SEARCH_MODEL:-gpt-4o-mini-search-preview}
+      api_key: ${OPENAI_API_KEY}
+      web_search: true
+    gemini_search:            # Gemini with Google Search grounding
+      provider: gemini
+      model: ${GEMINI_MODEL:-gemini-2.5-flash}
+      api_key: ${GEMINI_API_KEY}
+      web_search: true
+    perplexity:
+      provider: perplexity
+      model: ${PERPLEXITY_MODEL:-sonar}
+      api_key: ${PERPLEXITY_API_KEY}
+      web_search: true
+
+  # Fallback routes. Which model does each step is set in steps.yaml (same folder);
+  # these routes only apply to steps steps.yaml does not mention.
+  routes:
+__ROUTES__
+
+# Web search powers company discovery and contact lookup. "ai" = the models in
+# the web_search step of steps.yaml (OpenAI search, Gemini + Google, Perplexity).
+search:
+  web: [tavily, brave, serpapi, ai]
+  providers:
+    tavily:  { api_key: "${TAVILY_API_KEY}" }
+    brave:   { api_key: "${BRAVE_API_KEY}" }
+    serpapi: { api_key: "${SERPAPI_API_KEY}" }
+
+# Job sources. Keyless sources work out of the box.
+sources:
+  greenhouse:      { enabled: true }      # public company boards API
+  lever:           { enabled: true }
+  ashby:           { enabled: true }
+  smartrecruiters: { enabled: true }
+  workable:        { enabled: true }
+  workday:         { enabled: true, max_jobs: 400 }  # Workday career sites (large employers)
+  careers_page:    { enabled: true }      # schema.org JobPosting on company sites
+  remotive:        { enabled: true }      # remote jobs
+  arbeitnow:       { enabled: false }     # EU-focused
+  adzuna:
+    enabled: true
+    app_id: ${ADZUNA_APP_ID}
+    app_key: ${ADZUNA_APP_KEY}
+  serpapi_google_jobs:                    # Google Jobs (includes LinkedIn/Indeed/Monster listings)
+    enabled: true
+    api_key: ${SERPAPI_API_KEY}
+  jsearch:                                # RapidAPI JSearch (Google Jobs aggregate)
+    enabled: true
+    api_key: ${RAPIDAPI_KEY}
+  jooble:
+    enabled: true
+    api_key: ${JOOBLE_API_KEY}
+
+limits:
+  per_domain_rps: 1.0
+  http_timeout_s: 25
+  respect_robots: true
+  cache_ttl_hours: 12
+  run_budget:
+    max_tokens: 200000
+    max_llm_calls: 60
+    max_search_calls: 60
+    max_pages: 200
+    max_minutes: 30
+
+matching:
+  min_score: 50                 # roles below this are kept but not prioritised
+  contacts_for_top_n_roles: 10  # contact lookup only for the best N roles per run
+
+server:
+  host: 127.0.0.1               # keep local; the API is not meant to be exposed
+  port: 8765
+
+export:
+  dir: null                     # null = Documents/JobFinder Exports

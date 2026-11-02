@@ -1,0 +1,304 @@
+{
+  "$defs": {
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "kind": {
+          "default": "posting",
+          "enum": [
+            "posting",
+            "ats_api",
+            "job_api",
+            "search_result",
+            "company_site",
+            "profile",
+            "manual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "snippet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snippet"
+        },
+        "fetched_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fetched At"
+        },
+        "checked_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checked At"
+        },
+        "status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "ok",
+            "failed",
+            "blocked",
+            "external"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "http_status": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Http Status"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "SocialProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "network": {
+          "default": "linkedin",
+          "enum": [
+            "linkedin",
+            "github",
+            "x",
+            "facebook",
+            "instagram",
+            "xing",
+            "website",
+            "other"
+          ],
+          "title": "Network",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Handle"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "SocialProfile",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "ct:<profile-url> / ct:email:<email>; computed when omitted",
+      "title": "Id"
+    },
+    "company_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Company Id"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "title": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Title"
+    },
+    "type": {
+      "default": "other",
+      "enum": [
+        "recruiter",
+        "talent_acquisition",
+        "hr",
+        "hiring_manager",
+        "team_member",
+        "executive",
+        "other"
+      ],
+      "title": "Type",
+      "type": "string"
+    },
+    "profiles": {
+      "items": {
+        "$ref": "#/$defs/SocialProfile"
+      },
+      "title": "Profiles",
+      "type": "array"
+    },
+    "work_email": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Work Email"
+    },
+    "phone": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Only business numbers published by the company",
+      "title": "Phone"
+    },
+    "location": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Location"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "title": "Evidence",
+      "type": "array"
+    },
+    "lawful_basis": {
+      "default": "legitimate_interest:job_application",
+      "title": "Lawful Basis",
+      "type": "string"
+    },
+    "source": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source"
+    },
+    "first_seen": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "First Seen"
+    },
+    "last_seen": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Seen"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "Contact",
+  "type": "object"
+}
